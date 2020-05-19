@@ -1,0 +1,82 @@
+/*****************************************************************************
+** Project: PIXELDIVS Final Project
+** Authors: Chitali Buge, Chih-Yun Wu, Andrew Johnson, and Alyssa Pratt
+** Date: 18 May 2020
+** Description: Contains all the CSS styling for the entire project
+*****************************************************************************/
+body {
+	font-family: Roboto;
+}
+
+.title-main {
+	font-size:40px;
+	font-style:bold;
+	padding: 10px;
+	text-align: center;
+}
+
+.title-divs {
+	padding-left:10px;
+	padding-right:10px;
+	margin-left: 5px;
+	background-color: #4e9af8;
+	color: #ffffff;
+}
+
+.error404-header {
+	font-size: 80px;
+	text-align: center;
+}
+
+.error404-description {
+	font-size: 18px;
+	text-align:center;
+}
+
+#main {
+	margin-left: 5%;
+	margin-right: 5%;
+	display: flex;
+	flex-wrap:nowrap;
+}
+
+#canvas-selector {
+	flex: 1 15%;
+	border: 1px solid black;
+}
+
+#canvas-grid {
+	flex: 1 70%;
+	display:flex;
+	align-items: center;
+}
+
+#grid {
+	display: inline-block;
+	margin: 0 auto;
+	border: 1px solid black;
+}
+
+.grid-column {
+	display:flex;
+	flex-wrap:nowrap;
+	flex-direction: row;
+}
+
+.grid-pixel {
+	height: 75px;
+	width: 75px;
+}
+
+.grid-pixel:hover {
+	box-sizing: border-box;
+	border: 5px solid black;
+	border-style: inset;
+}
+
+#canvas-color {
+	flex: 1 15%;
+	border: 1px solid black;
+}
+
+/* END OF FILE */
