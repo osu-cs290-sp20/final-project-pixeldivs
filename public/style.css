@@ -43,6 +43,7 @@ body {
 #canvas-selector {
 	flex: 1 15%;
 	border: 1px solid black;
+	text-align: center;
 }
 
 #canvas-grid {
@@ -70,13 +71,20 @@ body {
 
 .grid-pixel:hover {
 	box-sizing: border-box;
-	border: 5px solid black;
+	border: 5px inset;
 	border-style: inset;
 }
 
 #canvas-color {
 	flex: 1 15%;
 	border: 1px solid black;
+	text-align: center;
+	padding: 10px;
+}
+
+#palette {
+	display: flex;
+	flex-wrap: wrap;
 }
 
 /* END OF FILE */
