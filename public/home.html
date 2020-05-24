@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Load in the Roboto font from Google -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700" rel="stylesheet">
+    <!-- This 3rd-party stylesheet incorporates SVG icons from Font Awesome: http://fontawesome.com/ -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" crossorigin="anonymous">
+    <!-- Load in the style sheets. Requires a separate HTTP request -->
+    <link rel="stylesheet" href="/style.css" media="screen">
+    <!-- Load in the JavaScript. Requires a separate HTTP request -->
+    <script src="/home.js" charset="utf-8" defer></script>
+    <title>Pixeldivs</title>
+</head>
+<body>
+    <!-- Website Name -->
+    <h1 class="title-main">PIXEL<span class="title-divs">DIVS</span></h1>
+    
+    <!--Search bar-->
+    <li class="search-bar">
+        <input type="text" id="search-input" placeholder="Search a Drawing...">
+        <button type="button" id="search-button"><i class="fas fa-search"></i></button>
+    </li>
+    <!--Drawing Container-->
+    <div id="drawing-container">
+        <!--Add new Drawing-->
+        <div class= "square new-drawing">
+            <i class="fas fa-plus"></i>
+            New Drawing
+        </div>
+        <!--Prepopulated Drawings-->
+        <div class="drawings">
+            <div class="preview square">  
+            </div>
+            <label class="title-drawings"> Drawing 1</label>
+        </div>
+        <div class="drawings">
+            <div class="preview square">
+            </div>
+            <label class="title-drawings"> Drawing 2</label>
+        </div>
+        <div class="drawings">
+            <div class="preview square">
+            </div>
+            <label class="title-drawings"> Drawing 3</label>
+        </div>
+        <div class="drawings">
+            <div class="preview square">  
+            </div>
+            <label class="title-drawings"> Drawing 4</label>
+        </div>
+        <div class="drawings">
+            <div class="preview square"> 
+            </div>
+            <label class="title-drawings"> Drawing 5</label>
+        </div>
+
+        
+    </div>
+
+</body>
+</html>

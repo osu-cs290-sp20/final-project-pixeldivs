@@ -17,7 +17,11 @@
 *****************************************************************************/
 function getHtml (request, response) {
 	console.log(request.url);
-	if (request.url == "/index.html" || request.url == "/") {
+	if (request.url == "/home.html" || request.url == "/") {
+		response.writeHead(200, {"Content-Type": "text/html"});
+		response.write(homeContent);
+	}
+	else if (request.url == "/index.html") {
 		response.writeHead(200, {"Content-Type": "text/html"});
 		response.write(htmlContent);
 	}
@@ -28,6 +32,10 @@ function getHtml (request, response) {
 	else  if (request.url == "/index.js") {
 		response.writeHead(200, {"Content-Type": "application/javascript"});
 		response.write(jsContent);
+	}
+	else  if (request.url == "/home.js") {
+		response.writeHead(200, {"Content-Type": "application/javascript"});
+		response.write(homejsContent);
 	}
 	else  if (request.url == "/404.html") {
 		response.writeHead(200, {"Content-Type": "text/html"});
@@ -66,8 +74,20 @@ var htmlContent;
 var error404;
 var cssContent;
 var jsContent;
+var homeContent;
+var homejsContent;
 
 /* Read all data into variables */
+fs.readFile("public/home.html", "utf8", function(err, data) {
+	if (err) {
+		console.log("Could not read HTML file");
+	}
+	else {
+		homeContent = data;
+		console.log("HTML content retrieved");
+	}
+});
+
 fs.readFile("public/index.html", "utf8", function(err, data) {
 	if (err) {
 		console.log("Could not read HTML file");
@@ -104,6 +124,15 @@ fs.readFile("public/index.js", "utf8", function(err, data) {
 	}
 	else {
 		jsContent = data;
+		console.log("JavaScript content retrieved");
+	}
+});
+fs.readFile("public/home.js", "utf8", function(err, data) {
+	if (err) {
+		console.log("Could not read JavaScript file");
+	}
+	else {
+		homejsContent = data;
 		console.log("JavaScript content retrieved");
 	}
 });

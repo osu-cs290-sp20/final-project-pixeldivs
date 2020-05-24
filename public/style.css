@@ -4,6 +4,12 @@
 ** Date: 18 May 2020
 ** Description: Contains all the CSS styling for the entire project
 *****************************************************************************/
+
+/*****************************************************************************
+** HTML Page: All
+** Date: 18 May 2020
+** Description: Contains all the CSS styling for everything that is the same across multiple webpages
+*****************************************************************************/
 body {
 	font-family: Roboto;
 }
@@ -22,7 +28,11 @@ body {
 	background-color: #4e9af8;
 	color: #ffffff;
 }
-
+/*****************************************************************************
+** HTML Page: 404 page
+** Date: 18 May 2020
+** Description: 404 error page styling
+*****************************************************************************/
 .error404-header {
 	font-size: 80px;
 	text-align: center;
@@ -32,6 +42,11 @@ body {
 	font-size: 18px;
 	text-align:center;
 }
+/*****************************************************************************
+** HTML Page: Drawing page
+** Date: 18 May 2020
+** Description: Contains all the styling for index.html
+*****************************************************************************/
 
 #main {
 	margin-left: 5%;
@@ -85,6 +100,96 @@ body {
 #palette {
 	display: flex;
 	flex-wrap: wrap;
+}
+
+/*****************************************************************************
+** HTML Page: Home
+** Date: 18 May 2020
+** Description: Contains all the CSS styling for the home page
+*****************************************************************************/
+/*
+** Search bar
+*/
+.search-bar{
+	text-align: center;
+	color:transparent;
+}
+  #search-input {
+	padding: 4px;
+	width: 400px;
+	font-size: 16px;
+	background-color: #eee;
+	border: 1px solid #dadada;
+	border-radius: 2px;
+  }
+  
+  #search-input:focus {
+	outline: none;
+	background-color: #fff;
+  }
+  
+  #search-button {
+	margin-left: -5px;
+	font-size: 16px;
+	background: none;
+	border: none;
+	color: #343434;
+	cursor: pointer;
+  }
+  
+  #search-button:hover {
+	color: #319df6;
+  }
+  
+  #search-button:focus {
+	color: #319df6;
+	outline: none;
+  }
+/*
+** Drawing gallery
+*/
+#drawing-container{
+	margin: 50px;
+	display: flex;
+	flex-wrap: wrap;
+}
+.drawings {
+	width:400px;
+	height:400px;
+}
+.square{
+	width:350px;
+	height:350px;
+	background-color: #dadada;
+	border-radius: 5px;
+}
+.title-drawings{
+	width:350px;
+	text-align: center;
+	color: #319df6;
+	float:left;
+	font-size: 16px;
+}
+.new-drawing{
+	margin-right: 50px;
+	display: flex;
+	flex-direction:column; 
+	justify-content: center;
+	align-items: center;
+	color: #319df6;
+	font-size: 20px;
+
+}
+.fa-plus{
+	font-size: 40px;
+	margin: 20px;
+}
+.square:hover{
+	background-color: white;
+	border: 1px solid #dadada;
+	border-radius: 5px;
+	transform: scale(1.1); 
+	transition-duration: .20s;
 }
 
 /* END OF FILE */
