@@ -105,6 +105,11 @@ function drawingSetting(event){
 
 	//close
 	close_button[0].addEventListener('click', function(){
+		document.querySelector('#title-input').value = "";
+		document.querySelector('#width-range').value = 50;
+		document.querySelector('#height-range').value = 50;
+		document.querySelector('#w_volume').value = 50;
+		document.querySelector('#h_volume').value = 50;
 		setting_modal[0].style.display = 'none';
 		setting_modal[1].style.display = 'none';
 	})
