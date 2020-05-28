@@ -14,8 +14,12 @@ var newDrawingCount = 0;
 var newDrawing = document.getElementsByClassName("new-drawing");
 var searchdrawing = document.getElementById('search-input');
 var allDrawings = document.getElementsByClassName('drawings');
+var setting_modal = document.getElementsByClassName('hidden');
+var close_button = document.getElementsByClassName("modal-close-button");
+var create_button = document.getElementsByClassName("modal-create-button");
 
-newDrawing[0].addEventListener('click', createDrawing);
+create_button[0].addEventListener('click', createDrawing);
+newDrawing[0].addEventListener('click', drawingSetting);
 searchdrawing.addEventListener('input', searchforDrawingTitle);
 for(var i = 0; i < allDrawings.length; i++){
 	allDrawings[i].addEventListener('click', selectDrawing);
@@ -27,7 +31,7 @@ for(var i = 0; i < allDrawings.length; i++){
 ** Description: Adds a new drawing to the home gallery when the user clicks on the plus button
 ** Parameters: None
 ** Pre-coditions: User clicks on add a new drawing
-** Post-conditions: A new drawing is created in the gallery and the user is redirected to the drawing page 
+** Post-conditions: A new drawing is created in the gallery and the user is redirected to the drawing page
 *****************************************************************************/
 function createDrawing(event){
 
@@ -85,4 +89,49 @@ function searchforDrawingTitle(event){
 function selectDrawing(event){
 	window.location.href = "index.html";
 	/* Need databases to finish implementing this function */
+}
+
+/*****************************************************************************
+** Function: drawingSetting
+** Description: When user clicks on create drawing, setting displays
+** Parameters: Click on drawing
+** Pre-coditions: User clicks on create drawing
+** Post-conditions: setting modal shows up
+*****************************************************************************/
+function drawingSetting(event){
+
+	setting_modal[0].style.display = 'block';
+	setting_modal[1].style.display = 'block';
+
+	//close
+	close_button[0].addEventListener('click', function(){
+		document.querySelector('#title-input').value = "";
+		document.querySelector('#width-range').value = 50;
+		document.querySelector('#height-range').value = 50;
+		document.querySelector('#w_volume').value = 50;
+		document.querySelector('#h_volume').value = 50;
+		setting_modal[0].style.display = 'none';
+		setting_modal[1].style.display = 'none';
+	})
+
+}
+/*****************************************************************************
+** Function: w_outputUpdate(vol)
+** Description: show current value of range slider of width
+** Parameters: volume
+** Pre-coditions: user move the rnage slider
+** Post-conditions: value shows up
+*****************************************************************************/
+function w_outputUpdate(vol) {
+	document.querySelector('#w_volume').value = vol;
+}
+/*****************************************************************************
+** Function: h_outputUpdate(vol)
+** Description: show current value of randge slider of height
+** Parameters: volume
+** Pre-coditions: user move the rnage slider
+** Post-conditions: value shows up
+*****************************************************************************/
+function h_outputUpdate(vol) {
+	document.querySelector('#h_volume').value = vol;
 }
