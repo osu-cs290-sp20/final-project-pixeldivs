@@ -47,7 +47,57 @@ body {
 ** Date: 18 May 2020
 ** Description: Contains all the styling for index.html
 *****************************************************************************/
+/*
+	Navbar and dropdown -- AP
+*/
 
+.navlist {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.otherprojs-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.otherprojs {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+
+/*
+ Other
+*/
 #main {
 	margin-left: 5%;
 	margin-right: 5%;
@@ -122,12 +172,12 @@ body {
 	border: 1px solid #dadada;
 	border-radius: 2px;
   }
-  
+
   #search-input:focus {
 	outline: none;
 	background-color: #fff;
   }
-  
+
   #search-button {
 	margin-left: -5px;
 	font-size: 16px;
@@ -136,11 +186,11 @@ body {
 	color: #343434;
 	cursor: pointer;
   }
-  
+
   #search-button:hover {
 	color: #319df6;
   }
-  
+
   #search-button:focus {
 	color: #319df6;
 	outline: none;
@@ -173,7 +223,7 @@ body {
 .new-drawing{
 	margin-right: 50px;
 	display: flex;
-	flex-direction:column; 
+	flex-direction:column;
 	justify-content: center;
 	align-items: center;
 	color: #319df6;
@@ -188,7 +238,7 @@ body {
 	background-color: white;
 	border: 1px solid #dadada;
 	border-radius: 5px;
-	transform: scale(1.1); 
+	transform: scale(1.1);
 	transition-duration: .20s;
 }
 
