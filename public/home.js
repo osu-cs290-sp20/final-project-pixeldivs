@@ -110,10 +110,23 @@ function drawingSetting(event){
 	})
 
 }
-
+/*****************************************************************************
+** Function: w_outputUpdate(vol)
+** Description: show current value of range slider of width
+** Parameters: volume
+** Pre-coditions: user move the rnage slider
+** Post-conditions: value shows up
+*****************************************************************************/
 function w_outputUpdate(vol) {
 	document.querySelector('#w_volume').value = vol;
 }
+/*****************************************************************************
+** Function: h_outputUpdate(vol)
+** Description: show current value of randge slider of height
+** Parameters: volume
+** Pre-coditions: user move the rnage slider
+** Post-conditions: value shows up
+*****************************************************************************/
 function h_outputUpdate(vol) {
 	document.querySelector('#h_volume').value = vol;
 }
