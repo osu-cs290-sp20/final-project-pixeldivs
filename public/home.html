@@ -16,7 +16,7 @@
 <body>
     <!-- Website Name -->
     <h1 class="title-main">PIXEL<span class="title-divs">DIVS</span></h1>
-    
+
     <!--Search bar-->
     <li class="search-bar">
         <input type="text" id="search-input" placeholder="Search a Drawing...">
@@ -31,7 +31,7 @@
         </div>
         <!--Prepopulated Drawings-->
         <div class="drawings">
-            <div class="preview square">  
+            <div class="preview square">
             </div>
             <label class="title-drawings"> Drawing 1</label>
         </div>
@@ -46,18 +46,37 @@
             <label class="title-drawings"> Drawing 3</label>
         </div>
         <div class="drawings">
-            <div class="preview square">  
+            <div class="preview square">
             </div>
             <label class="title-drawings"> Drawing 4</label>
         </div>
         <div class="drawings">
-            <div class="preview square"> 
+            <div class="preview square">
             </div>
             <label class="title-drawings"> Drawing 5</label>
         </div>
 
-        
+
     </div>
+
+<!--drawing setting-->
+<div id="modal-backdrop" class="hidden">
+  <div id="box" class ="hidden">
+
+    <button type="button" class="modal-close-button">&times;</button>
+    <h3>Title</h3>
+    <input type="text" id="title-input" placeholder="Untitled drawing">
+    <div id="range-slider">
+      <h3>Width</h3>
+      <input type="range" min="4" max="100" value="50" class="slider" id="width-range" oninput="w_outputUpdate(value)">
+      <output for="width-range" id="w_volume">50</output>
+      <h3>Height</h3>
+      <input type="range" min="4" max="100" value="50" class="slider" id="height-Range" oninput="h_outputUpdate(value)">
+      <output for="height-range" id="h_volume">50</output>
+    </div>
+    <button type="button" class="modal-create-button">Create</button>
+  </div>
+</div>
 
 </body>
 </html>
