@@ -8,7 +8,7 @@
 
 /*****************************************************************************
 ** Function: getHTML
-** Description: Interprets a user request to the server based upon the URL 
+** Description: Interprets a user request to the server based upon the URL
 ** requested and sends a proper response with the correct content
 ** Parameters: request is all the information the user is sending, response
 ** is all the data the server is sending
