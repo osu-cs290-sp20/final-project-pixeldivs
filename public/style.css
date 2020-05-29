@@ -294,9 +294,10 @@ nav {
 ** Drawing gallery
 */
 #drawing-container{
-	margin: 50px;
+	margin: 30px;
 	display: flex;
 	flex-wrap: wrap;
+
 }
 .drawings {
 	width:400px;
