@@ -43,13 +43,20 @@ function createDrawing(event){
 	drawingContainer.appendChild(preview);
 
 	var drawingName = document.createElement('label');
-    drawingName.classList.add('title-drawings');
-    if( newDrawingCount === 0){
-        drawingName.textContent = 'Untitled Drawing'
-    }else{
-        drawingName.textContent = 'Untitled Drawing ' + newDrawingCount;
-    }
-	newDrawingCount++;
+	drawingName.classList.add('title-drawings');
+	var customizedTitle = document.getElementById('title-input');
+	if(customizedTitle.value != null &&  customizedTitle.value != "" && customizedTitle.length == undefined){
+		drawingName.textContent = customizedTitle.value;
+	}
+	else{
+		if( newDrawingCount === 0){
+			drawingName.textContent = 'Untitled Drawing'
+		}else{
+			drawingName.textContent = 'Untitled Drawing ' + newDrawingCount;
+		}
+		newDrawingCount++;
+	}
+    
 	drawingContainer.appendChild(drawingName);
 
 	var alldrawings = document.getElementById('drawing-container');
