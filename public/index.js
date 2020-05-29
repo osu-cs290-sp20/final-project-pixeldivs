@@ -44,14 +44,15 @@ var palette = [
 *****************************************************************************/
 function addPixel (color, source) {
 	var pixel = document.createElement("div");
-	pixel.classList.add("grid-pixel");
 	pixel.style.background = color;
 	if (source) {
+		pixel.classList.add("palette-pixel");
 		pixel.onclick = function () {
 			currentColor = pixel.style.background;
 		};
 	}
 	else {
+		pixel.classList.add("grid-pixel");
 		pixel.onclick = function () {
 			pixel.style.background = currentColor;
 		};
@@ -130,6 +131,20 @@ function clearGrid (color) {
 			grid.children[i].children[j].style.background = color;
 		}
 	}
+}
+
+
+/*****************************************************************************
+** Function: addColor
+** Description: Activates when the user clicks the add new color button 
+** in the palette. It adds a new color to the palette for the user to use.
+** Parameters: none
+** Pre-conditions: Project is created and loaded.
+** Post-conditions: New color added to the palette
+*****************************************************************************/
+function addColor () {
+	var canvasColor = document.getElementById("palette");
+	canvasColor.appendChild(addPixel("rgb(0,0,0)", true));
 }
 
 
