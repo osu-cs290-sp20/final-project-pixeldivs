@@ -124,21 +124,28 @@ nav {
 	flex-wrap:nowrap;
 }
 
-#canvas-selector {
-	flex: 1 15%;
-	border: 1px solid black;
+.canvas-label {
+	font-size: 18px;
+	font-weight: bold;
+	display: block;
+	margin: 0;
 	text-align: center;
 }
 
 #canvas-grid {
 	flex: 1 70%;
+	padding: 10px;
+}
+
+#canvas {
+	flex: 1;
 	display:flex;
 	align-items: center;
 }
 
 #grid {
 	display: inline-block;
-	margin: 0 auto;
+	margin: 10px auto;
 	border: 1px solid black;
 }
 
@@ -157,18 +164,87 @@ nav {
 	box-sizing: border-box;
 	border: 5px inset;
 	border-style: inset;
+	cursor:default;
+}
+
+.grid-pixel:active {
+	border: 10px inset;
+}
+
+.palette-pixel {
+	height: 75px;
+	width: 75px;
+}
+
+.palette-pixel:hover {
+	box-sizing: border-box;
+	border: 5px inset;
+	border-style: inset;
+	cursor:default;
+}
+
+.palette-pixel:active {
+	border: 10px inset;
 }
 
 #canvas-color {
 	flex: 1 15%;
-	border: 1px solid black;
 	text-align: center;
-	padding: 10px;
 }
 
 #palette {
 	display: flex;
 	flex-wrap: wrap;
+	margin: 10px auto;
+}
+
+#add-button {
+	display: inline-block;
+	background-color: #dadada;
+	color: #319df6;
+	text-align: center;
+	font-size: 50px;
+	padding: 12.5px;
+}
+
+#add-button:hover {
+	background-color: #319df6;
+	color: #dadada;
+	cursor:default;
+}
+
+#add-button:active {
+	background-color: #319df6;
+	color: #dadada;
+	padding: 7.5px;
+	box-sizing: border-box;
+	border: 5px inset;
+	border-style: inset;
+}
+
+#fill-button{
+	display: inline-block;
+	background-color: #dadada;
+	color: #319df6;
+	text-align: center;
+	font-weight:bold;
+	font-size: 50px;
+	padding: 12.5px;
+}
+
+#fill-button:hover {
+	background-color: #319df6;
+	color: #dadada;
+	cursor:default;
+}
+
+#fill-button:active {
+	background-color: #319df6;
+	color: #dadada;
+	padding: 7.5px;
+	box-sizing: border-box;
+	border: 5px inset;
+	border-style: inset;
 }
 
 /*****************************************************************************

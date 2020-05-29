@@ -84,7 +84,7 @@ fs.readFile("public/home.html", "utf8", function(err, data) {
 	}
 	else {
 		homeContent = data;
-		console.log("HTML content retrieved");
+		console.log("Home HTML content retrieved");
 	}
 });
 
@@ -94,7 +94,7 @@ fs.readFile("public/index.html", "utf8", function(err, data) {
 	}
 	else {
 		htmlContent = data;
-		console.log("HTML content retrieved");
+		console.log("Index HTML content retrieved");
 	}
 });
 
@@ -124,7 +124,7 @@ fs.readFile("public/index.js", "utf8", function(err, data) {
 	}
 	else {
 		jsContent = data;
-		console.log("JavaScript content retrieved");
+		console.log("Index JavaScript content retrieved");
 	}
 });
 fs.readFile("public/home.js", "utf8", function(err, data) {
@@ -133,7 +133,7 @@ fs.readFile("public/home.js", "utf8", function(err, data) {
 	}
 	else {
 		homejsContent = data;
-		console.log("JavaScript content retrieved");
+		console.log("Home JavaScript content retrieved");
 	}
 });
 

@@ -13,6 +13,8 @@
 
 		<!-- Load in the Roboto font from Google -->
 		<link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700" rel="stylesheet">
+		<!-- This 3rd-party stylesheet incorporates SVG icons from Font Awesome: http://fontawesome.com/ -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" crossorigin="anonymous">
 
 		<!-- Load in the style sheets. Requires a separate HTTP request -->
 		<link rel="stylesheet" href="/style.css" media="screen">
@@ -35,18 +37,20 @@
 				<a href = ".">Create New Project</a>
 		</nav>
 		<div id="main">
-			<div id="canvas-selector">
-				<h3>Projects</h3>
-			</div>
 			<div id="canvas-grid">
-				<div id="grid"></div>
+				<p class="canvas-label">Untitled Drawing</p>
+				<div id="canvas">
+
+					<div id="grid"></div>
+				</div>
 			</div>
 			<div id="canvas-color">
-				<h3>Color Palette</h3>
+				<!-- <p class="canvas-label">Color Palette</p>-->
 				<div id="palette"></div>
-				<button id="clear-button" onclick="clearGrid(currentColor);">
-					Fill With Current Color
-				</button>
+				<i id="add-button" class="fas fa-plus" onclick="addColor();"></i>
+				<div id="fill-button" onclick="clearGrid(currentColor);">
+					FILL
+				</div>
 			</div>
 		</div>
 	</body>
