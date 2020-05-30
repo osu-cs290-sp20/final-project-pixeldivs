@@ -144,5 +144,4 @@ fs.readFile("public/home.js", "utf8", function(err, data) {
  * accepting user requests
  */
 server.listen(process.env.PORT || 3000, serverStart);
-
 // END OF FILE
