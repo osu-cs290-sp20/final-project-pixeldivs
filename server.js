@@ -57,6 +57,7 @@ function getHtml (request, response) {
 ** Preconditions: The server is started up and is listening on a port
 ** Postconditions: Status of the server is ouputted to the console
 *****************************************************************************/
+
 function serverStart () {
 	console.log("Server is running on port 3000");
 }
@@ -137,20 +138,6 @@ fs.readFile("public/home.js", "utf8", function(err, data) {
 	}
 });
 
-/*working on express(incomplete)*/
-var path = require('path');
-var express = require('express');
-var exphbs = require('express-handlebars');
-var app = express();
-app.engine('handlebars', exphbs());;
-app.set('view engine', 'handlebars');
-app.use(express.static('public'));
-
-
-app.get('*', function (req, res, next) {
-  res.status(404).render('404page');
-
-});
 
 /* This opens the server on port 3000 of the host. This MUST be placed at the
  * end of this file to ensure the server has successfully started up before
