@@ -1,0 +1,19 @@
+<!--search bar-->
+<li class="search-bar">
+    <input type="text" id="search-input" placeholder="Search a Drawing...">
+    <button type="button" id="search-button"><i class="fas fa-search"></i></button>
+</li>
+
+<!--drawing container-->
+  <div id="drawing-container">
+    <div class= "square new-drawing">
+        <i class="fas fa-plus"></i>
+        New Drawing
+    </div>
+    {{#each drawing}}
+      {{>newDrawing}}
+    {{/each}}
+  </div>
+
+<!--drawing setting-->
+  {{>drawSetting}}
