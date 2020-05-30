@@ -1,4 +1,4 @@
-/*****************************************************************************
+	/*****************************************************************************
 ** Project: PIXELDIVS Final Project
 ** Authors: Chitali Buge, Chih-Yun Wu, Andrew Johnson, and Alyssa Pratt
 ** Date: 18 May 2020
@@ -107,7 +107,7 @@ function fillGrid (color) {
 ** Description: Adds the palette of colors for the user to chose
 ** Parameters: none
 ** Pre-coditions: palette is defined
-** Post-conditions: Palette added 
+** Post-conditions: Palette added
 *****************************************************************************/
 function fillPalette () {
 	var canvasColor = document.getElementById("palette");
@@ -136,7 +136,7 @@ function clearGrid (color) {
 
 /*****************************************************************************
 ** Function: addColor
-** Description: Activates when the user clicks the add new color button 
+** Description: Activates when the user clicks the add new color button
 ** in the palette. It adds a new color to the palette for the user to use.
 ** Parameters: none
 ** Pre-conditions: Project is created and loaded.
