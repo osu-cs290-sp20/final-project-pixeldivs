@@ -1,0 +1,51 @@
+<nav class = "navbar">
+    <a href="/">Home</a>
+    <a href='#'>Save</a>
+    <div class = "dropdown">
+      <button class = "otherprojs-btn">Other Projects</button>
+      <div class = "otherprojs">
+        <a href = '#'>Some Project A</a>
+        <a href = '#'>Some Project B</a>
+        <a href = '#'>Some Project C</a>
+      </div>
+    </div>
+    <a href = ".">Create New Project</a>
+</nav>
+<div id="main">
+  <div id="canvas-grid">
+    <p class="canvas-label">Untitled Drawing</p>
+    <div id="canvas">
+
+      <div id="grid"></div>
+    </div>
+  </div>
+  <div id="canvas-color">
+    <!-- <p class="canvas-label">Color Palette</p>-->
+    <div id="palette"></div>
+    <i id="add-button" class="fas fa-plus"></i>
+    <div id="fill-button" onclick="clearGrid(currentColor);">
+      FILL
+    </div>
+  </div>
+</div>
+<!--Add color to palette modal-->
+<div id="modal-backdrop" class="hidden">
+  <div id="color-modal" class ="hidden">
+  <button type="button" id="modal-close-button" class="modal-close-button">&times;</button>
+  <div id="sliding-control">
+    <div id="range-slider" class="slider-menu">
+      <h3 class="slider-menu">Red</h3>
+      <input type="range" min="0" max="256" value="0" class="slider slider-menu" id="red-range" oninput="r_outputUpdate(value)">
+      <output for="red-range" id="r_volume">0</output>
+      <h3 class="slider-menu">Green</h3>
+      <input type="range" min="0" max="256" value="0" class="slider slider-menu" id="green-range" oninput="g_outputUpdate(value)">
+      <output for="green-range" id="g_volume">0</output>
+      <h3 class="slider-menu">Blue</h3>
+      <input type="range" min="0" max="256" value="0" class="slider slider-menu" id="blue-range" oninput="b_outputUpdate(value)">
+      <output for="blue-range" id="b_volume">0</output>
+    </div>
+    <div id="modal-color-preview"></div>
+  </div>
+  <button type="button" id="modal-add-button" class="modal-create-button">Add</button>
+  </div>
+</div>

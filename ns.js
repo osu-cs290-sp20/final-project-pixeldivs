@@ -20,10 +20,17 @@ var c = [a, b];
 app.get('/', function (req, res, next) {
   res.render('homepage', {
 		drawing: c,
+    home:true,
 	});
 
 });
 
+app.get('/drawingpage', function (req, res, next) {
+  res.render('drawingpage', {
+    home:false,
+  });
+
+});
 /* 404 page*/
 app.get('*', function (req, res, next) {
   res.status(404).render('404page');

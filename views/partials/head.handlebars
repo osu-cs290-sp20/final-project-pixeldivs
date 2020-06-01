@@ -8,6 +8,10 @@
     <!-- Load in the style sheets. Requires a separate HTTP request -->
     <link rel="stylesheet" href="/style.css" media="screen">
     <!-- Load in the JavaScript. Requires a separate HTTP request -->
-    <script src="/home.js" charset="utf-8" defer></script>
+    {{#if home}}
+      <script src="/home.js" charset="utf-8" defer></script>
+    {{else}}
+      <script src="/index.js" charset="utf-8" defer></script>
+    {{/if}}
     <title>Pixeldivs</title>
 </head>

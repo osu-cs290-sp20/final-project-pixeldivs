@@ -56,13 +56,13 @@ function createDrawing(event){
 		}
 		newDrawingCount++;
 	}
-    
+
 	drawingContainer.appendChild(drawingName);
 
 	var alldrawings = document.getElementById('drawing-container');
     alldrawings.appendChild(drawingContainer);
 
-    window.location.href = "index.html";
+    window.location.href = "drawingpage";
 }
 
 /*****************************************************************************
@@ -94,7 +94,7 @@ function searchforDrawingTitle(event){
 *****************************************************************************/
 
 function selectDrawing(event){
-	window.location.href = "index.html";
+	window.location.href = "drawingpage";
 	/* Need databases to finish implementing this function */
 }
 
