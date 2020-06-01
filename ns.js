@@ -3,7 +3,7 @@ var path = require('path');
 var express = require('express');
 var exphbs = require('express-handlebars');
 var app = express();
-var port = process.env.PORT || 5000;
+var port = process.env.PORT || 8000;
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 app.use(express.static('public'));
@@ -17,7 +17,7 @@ var b = {
 var c = [a, b];
 
 /* home page */
-app.get('/h', function (req, res, next) {
+app.get('/', function (req, res, next) {
   res.render('homepage', {
 		drawing: c,
 	});
