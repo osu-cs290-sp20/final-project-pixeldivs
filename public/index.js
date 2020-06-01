@@ -8,8 +8,8 @@
 
 /* Global variable */
 var currentColor = "rgb(0, 0, 0)";
-var gridWidth = 8;
-var gridHeight = 8;
+var gridWidth = 16;
+var gridHeight = 32;
 var palette = [
 	"rgb(0,0,0)",
 	"rgb(256, 256, 256)",
@@ -33,7 +33,19 @@ var palette = [
 	"rgb(128, 256, 256)",
 	"rgb(256, 128, 256)"
 ];
+var addButton = document.getElementById("add-button");
+addButton.onclick = openModal;
 
+var closeButton = document.getElementById("modal-close-button");
+closeButton.onclick = closeModal;
+
+var modalAddButton = document.getElementById("modal-add-button");
+modalAddButton.onclick = addColor;
+
+var modalColor = [0, 0, 0];
+
+fillGrid("rgb(256, 256, 256)");
+fillPalette();
 
 /*****************************************************************************
 ** Function: addPixel
@@ -45,6 +57,7 @@ var palette = [
 function addPixel (color, source) {
 	var pixel = document.createElement("div");
 	pixel.style.background = color;
+	var squareSize = 75;
 	if (source) {
 		pixel.classList.add("palette-pixel");
 		pixel.onclick = function () {
@@ -53,6 +66,14 @@ function addPixel (color, source) {
 	}
 	else {
 		pixel.classList.add("grid-pixel");
+		if (600/gridWidth > 600/gridHeight) {
+			squareSize = 600/gridHeight;
+		}
+		else {
+			squareSize = 600/gridWidth;
+		}
+		pixel.style.width = squareSize + "px";
+		pixel.style.height = squareSize + "px";
 		pixel.onclick = function () {
 			pixel.style.background = currentColor;
 		};
@@ -144,11 +165,125 @@ function clearGrid (color) {
 *****************************************************************************/
 function addColor () {
 	var canvasColor = document.getElementById("palette");
-	canvasColor.appendChild(addPixel("rgb(0,0,0)", true));
+	var rSlider = document.getElementById("red-range");
+	var gSlider = document.getElementById("green-range");
+	var bSlider = document.getElementById("blue-range");
+	modalColor[0] = rSlider.value;
+	modalColor[1] = gSlider.value;
+	modalColor[2] = bSlider.value;
+	var newColor = "rgb(" + modalColor[0] + ", " + modalColor[1] + ", " + 
+					modalColor[2] + ")";
+	canvasColor.appendChild(addPixel(newColor, true));
+	palette.push(newColor);
+	currentColor = palette[palette.length-1];
+	closeModal();
 }
 
 
-fillGrid("rgb(256, 256, 256)");
-fillPalette();
+/*****************************************************************************
+** Function: openModal
+** Description: Handles the event of the red button in the lower right corner
+** where a modal pops-up to let the user add a twit
+** Parameters: none
+** Pre-Conditions: button pressed
+** Post-Conditions: modal closed and color appropriately voided or added
+******************************************************************************/
+function openModal () {
+	var modalBackdrop = document.getElementById("modal-backdrop");
+	var colorModal = document.getElementById("color-modal");
+	modalBackdrop.classList.remove("hidden");
+	colorModal.classList.remove("hidden");
+}
+
+
+/*****************************************************************************
+** Function: closeModal
+** Description: Handles the event of the x and cancel buttons on the modal to
+** close the modal and clear text in text areas
+** Parameters: none
+** Pre-Conditions: modal visible
+** Post-Conditions: modal hidden and cleared
+******************************************************************************/
+function closeModal () {
+	var modalBackdrop = document.getElementById("modal-backdrop");
+	var colorModal = document.getElementById("color-modal");
+	var red_slider = document.getElementById("red-range");
+	var green_slider = document.getElementById("green-range");
+	var blue_slider = document.getElementById("blue-range");
+	var red_output = document.getElementById("r_volume");
+	var green_output = document.getElementById("g_volume");
+	var blue_output = document.getElementById("b_volume");
+	modalBackdrop.classList.add("hidden");
+	colorModal.classList.add("hidden");
+	red_slider.value = 0;
+	green_slider.value = 0;
+	blue_slider.value = 0;
+	red_output.value = 0;
+	green_output.value = 0;
+	blue_output.value = 0;
+	modalColor = [0, 0, 0];
+	updateModalPreview();
+}
+
+
+/*****************************************************************************
+** Function: r_outputUpdate
+** Description: Updates the red value and modal preview with the slider's 
+** value
+** Parameters: value representing the exact numerical value
+** Pre-Conditions: none
+** Post-Conditions: modal preview and output lable updated
+******************************************************************************/
+function r_outputUpdate(value) {
+	document.getElementById("r_volume").value = value;
+	modalColor[0] = value;
+	updateModalPreview();
+}
+
+
+/*****************************************************************************
+** Function: g_outputUpdate
+** Description: Updates the green value and modal preview with the slider's 
+** value
+** Parameters: value representing the exact numerical value
+** Pre-Conditions: none
+** Post-Conditions: modal preview and output lable updated
+******************************************************************************/
+function g_outputUpdate(value) {
+	document.getElementById("g_volume").value = value;
+	modalColor[1] = value;
+	updateModalPreview();
+}
+
+
+/*****************************************************************************
+** Function: b_outputUpdate
+** Description: Updates the blue value and modal preview with the slider's 
+** value
+** Parameters: value representing the exact numerical value
+** Pre-Conditions: none
+** Post-Conditions: modal preview and output lable updated
+******************************************************************************/
+function b_outputUpdate(value) {
+	document.getElementById("b_volume").value = value;
+	modalColor[2] = value;
+	updateModalPreview();
+}
+
+
+/*****************************************************************************
+** Function: updateModalPreview
+** Description: Updates the modal preview with the new color based on the
+** values of the sliders
+** Parameters: none
+** Pre-Conditions: none
+** Post-Conditions: modal preview updated with current modal color
+******************************************************************************/
+function updateModalPreview () {
+	var modalPreview = document.getElementById("modal-color-preview");
+	var newColor = "rgb(" + modalColor[0] + ", " + modalColor[1] + ", " + 
+					modalColor[2] + ")";
+	modalPreview.style.background = newColor;
+}
 
 // END OF FILE
