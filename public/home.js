@@ -90,6 +90,13 @@ function searchforDrawingTitle(event){
 	}
 }
 
+/*****************************************************************************
+** Function: renderPreview
+** Description: Previews the drawing on the home page
+** Parameters: preview rendering
+** Pre-coditions: N/A - rendered when page loads
+** Post-conditions: Previews can be seen on homepage
+*****************************************************************************/
 function renderPreview(preview){
 	var width= preview.parentNode.childNodes[5].childNodes[1].textContent;
 	var height= preview.parentNode.childNodes[5].childNodes[3].textContent;
