@@ -101,7 +101,6 @@ function renderPreview(preview){
 	var width= preview.parentNode.childNodes[5].childNodes[1].textContent;
 	var height= preview.parentNode.childNodes[5].childNodes[3].textContent;
 	var pixels= preview.parentNode.childNodes[5].childNodes[5].textContent;
-	var test = pixels.split(',')[10];
 	var columns = '';
 	var k = 0;
 	for(var i = 0; i < height; i++){
