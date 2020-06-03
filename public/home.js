@@ -14,6 +14,7 @@ var newDrawingCount = 0;
 var newDrawing = document.getElementsByClassName("new-drawing");
 var searchdrawing = document.getElementById('search-input');
 var allDrawings = document.getElementsByClassName('drawings');
+var drawingPreviews = document.getElementsByClassName('preview');
 var setting_modal = document.getElementsByClassName('hidden');
 var close_button = document.getElementsByClassName("modal-close-button");
 var create_button = document.getElementsByClassName("modal-create-button");
@@ -21,8 +22,11 @@ var create_button = document.getElementsByClassName("modal-create-button");
 create_button[0].addEventListener('click', createDrawing);
 newDrawing[0].addEventListener('click', drawingSetting);
 searchdrawing.addEventListener('input', searchforDrawingTitle);
+
 for(var i = 0; i < allDrawings.length; i++){
 	allDrawings[i].addEventListener('click', selectDrawing);
+	renderPreview(drawingPreviews[i])
+	//drawingPreviews[i].addEventListener( renderPreview);
 }
 
 
@@ -85,6 +89,33 @@ function searchforDrawingTitle(event){
 		}
 	}
 }
+
+function renderPreview(preview){
+	var width= preview.parentNode.childNodes[5].childNodes[1].textContent;
+	var height= preview.parentNode.childNodes[5].childNodes[3].textContent;
+	var pixels= preview.parentNode.childNodes[5].childNodes[5].textContent;
+	var test = pixels.split(',')[10];
+	var columns = '';
+	var k = 0;
+	for(var i = 0; i < height; i++){
+		for(var j = 0; j<width; j++){
+		
+			var pixel = document.createElement('div');
+			pixel.classList.add('preview-pixel');
+			pixel.textContent;
+			pixel.style.backgroundColor = pixels.split(',')[k];
+			preview.appendChild(pixel);
+			k++;
+		}
+	}
+	for(var j = 0; j < width; j++){
+		columns += 'auto ';
+	}
+	preview.style.gridTemplateColumns = columns;	
+}
+
+
+
 /*****************************************************************************
 ** Function: selectDrawing
 ** Description: When user clicks on a drawing they are reddirected to the drawing page

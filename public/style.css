@@ -354,6 +354,7 @@ nav {
 	height:350px;
 	background-color: #dadada;
 	border-radius: 5px;
+	
 }
 .title-drawings{
 	width:350px;
@@ -383,6 +384,28 @@ nav {
 	transform: scale(1.1);
 	transition-duration: .20s;
 }
+.preview{
+	padding: 10px;
+	display: grid;
+	grid-template-columns: auto auto auto auto auto auto;
+}
+
+.preview-pixel{
+		background-color:white;
+
+}
+/*
+.preview{
+	padding: 10px;
+}
+
+.preview-pixel{
+	font-size: 2.5px;
+	padding-right:3.5px;
+	background-color:blue;
+	color:blue;
+
+}*/
 
 /*Drawing Setting*/
 
