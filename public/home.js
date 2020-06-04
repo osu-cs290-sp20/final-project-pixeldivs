@@ -52,6 +52,7 @@ function createDrawing(event){
 	}
 	var choosenWidth = document.getElementById('width-range').value;
 	var choosenHeight = document.getElementById('height-range').value;
+	var standardPalette = ['#000000', '#ff0000', '#00ff00', '#0000ff', '#ffffff', '#00ffff', '#ff00ff', '#ffff00']; 
 	var pixelArr = [];
 
 
@@ -62,7 +63,8 @@ function createDrawing(event){
 		title: customizedTitle,
 		width: choosenWidth,
 		height: choosenHeight,
-		pixels: pixelArr
+		pixels: pixelArr,
+		palette: standardPalette
 	}
 	var newDrawinghtml = Handlebars.templates.newDrawing(newDrawing);
 	drawingContainer.insertAdjacentHTML('beforeend', newDrawinghtml);

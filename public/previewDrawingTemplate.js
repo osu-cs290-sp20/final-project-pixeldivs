@@ -16,6 +16,8 @@ templates['newDrawing'] = template({"compiler":[8,">= 4.3.0"],"main":function(co
     + alias4(((helper = (helper = lookupProperty(helpers,"height") || (depth0 != null ? lookupProperty(depth0,"height") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"height","hash":{},"data":data,"loc":{"start":{"line":7,"column":31},"end":{"line":7,"column":41}}}) : helper)))
     + "</label>\n        <label class='pixels'>"
     + alias4(((helper = (helper = lookupProperty(helpers,"pixels") || (depth0 != null ? lookupProperty(depth0,"pixels") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"pixels","hash":{},"data":data,"loc":{"start":{"line":8,"column":30},"end":{"line":8,"column":40}}}) : helper)))
-    + "</label>\n    </div>\n</div>\n";
+    + "</label>\n        <label class = 'pallet'>"
+    + alias4(((helper = (helper = lookupProperty(helpers,"pallet") || (depth0 != null ? lookupProperty(depth0,"pallet") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"pallet","hash":{},"data":data,"loc":{"start":{"line":9,"column":32},"end":{"line":9,"column":42}}}) : helper)))
+    + " </label>\n\n    </div>\n</div>\n";
 },"useData":true});
 })();
