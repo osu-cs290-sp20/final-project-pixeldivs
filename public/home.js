@@ -14,6 +14,7 @@ var newDrawingCount = 0;
 var newDrawing = document.getElementsByClassName("new-drawing");
 var searchdrawing = document.getElementById('search-input');
 var allDrawings = document.getElementsByClassName('drawings');
+var drawingContainer = document.getElementById('drawing-container');
 var drawingPreviews = document.getElementsByClassName('preview');
 var setting_modal = document.getElementsByClassName('hidden');
 var close_button = document.getElementsByClassName("modal-close-button");
@@ -32,41 +33,42 @@ for(var i = 0; i < allDrawings.length; i++){
 
 /*****************************************************************************
 ** Function: createDrawing
-** Description: Adds a new drawing to the home gallery when the user clicks on the plus button
+** Description: Adds a new drawing to the home gallery when the user clicks on the plus button and renders a preview
 ** Parameters: None
 ** Pre-coditions: User clicks on add a new drawing
 ** Post-conditions: A new drawing is created in the gallery and the user is redirected to the drawing page
 *****************************************************************************/
 function createDrawing(event){
-
-	var drawingContainer = document.createElement('div');
-	drawingContainer.classList.add('drawings');
-
-	var preview = document.createElement('div');
-	preview.classList.add('preview', 'square');
-	drawingContainer.appendChild(preview);
-
-	var drawingName = document.createElement('label');
-	drawingName.classList.add('title-drawings');
+	setting_modal[0].style.display = 'none';
+	setting_modal[1].style.display = 'none';
 	var customizedTitle = document.getElementById('title-input');
-	if(customizedTitle.value != null &&  customizedTitle.value != "" && customizedTitle.length == undefined){
-		drawingName.textContent = customizedTitle.value;
-	}
-	else{
+	if(customizedTitle.value == null || customizedTitle.value == '\n' ||  customizedTitle.value == "" || customizedTitle.length == undefined){
 		if( newDrawingCount === 0){
-			drawingName.textContent = 'Untitled Drawing'
+			customizedTitle = 'Untitled Drawing'
 		}else{
-			drawingName.textContent = 'Untitled Drawing ' + newDrawingCount;
+			customizedTitle = 'Untitled Drawing ' + newDrawingCount;
+			newDrawingCount++;
 		}
-		newDrawingCount++;
 	}
+	var choosenWidth = document.getElementById('width-range').value;
+	var choosenHeight = document.getElementById('height-range').value;
+	var pixelArr = [];
 
-	drawingContainer.appendChild(drawingName);
 
-	var alldrawings = document.getElementById('drawing-container');
-    alldrawings.appendChild(drawingContainer);
+	for(var i = 0; i < choosenWidth * choosenHeight; i++){
+		pixelArr.push('#FFFFFF');
+	}
+	var newDrawing = {
+		title: customizedTitle,
+		width: choosenWidth,
+		height: choosenHeight,
+		pixels: pixelArr
+	}
+	var newDrawinghtml = Handlebars.templates.newDrawing(newDrawing);
+	drawingContainer.insertAdjacentHTML('beforeend', newDrawinghtml);
+	renderPreview(drawingPreviews[drawingPreviews.length - 1]);
 
-    window.location.href = "drawingpage";
+	window.location.href = "drawingpage";
 }
 
 /*****************************************************************************
@@ -102,24 +104,18 @@ function renderPreview(preview){
 	var height= preview.parentNode.childNodes[5].childNodes[3].textContent;
 	var pixels= preview.parentNode.childNodes[5].childNodes[5].textContent;
 	var columns = '';
-	var k = 0;
-	for(var i = 0; i < height; i++){
-		for(var j = 0; j<width; j++){
-		
-			var pixel = document.createElement('div');
-			pixel.classList.add('preview-pixel');
-			pixel.textContent;
-			pixel.style.backgroundColor = pixels.split(',')[k];
-			preview.appendChild(pixel);
-			k++;
-		}
+	for(var i = 0; i < height * width; i++){
+		var pixel = document.createElement('div');
+		pixel.classList.add('preview-pixel');
+		pixel.textContent;
+		pixel.style.backgroundColor = pixels.split(',')[i];
+		preview.appendChild(pixel);
 	}
 	for(var j = 0; j < width; j++){
 		columns += 'auto ';
 	}
 	preview.style.gridTemplateColumns = columns;	
 }
-
 
 
 /*****************************************************************************

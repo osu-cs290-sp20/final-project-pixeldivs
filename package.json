@@ -2,16 +2,19 @@
   "name": "final-project-pixeldivs",
   "version": "1.0.0",
   "description": "Final project: Pixdiv",
-  "main": "server.js",
+  "main": "ns.js",
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
-    "handlebars": "^4.7.6"
+    "handlebars": "^4.7.6",
+    "npm": "^6.14.5"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \\\"Error: no test specified\\\" && exit 1",
-    "start": "node server.js"
+    "start": "node ns.js",
+    "build": "handlebars views/partials/newDrawing.handlebars -f public/previewDrawingTemplate.js",
+    "prestart": "npm run build"
   },
   "repository": {
     "type": "git",

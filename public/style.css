@@ -154,13 +154,13 @@ nav {
 	flex-wrap:nowrap;
 	flex-direction: row;
 }
-
-.grid-pixel {
 /*
+.grid-pixel {
+
 	height: 75px;
 	width: 75px;
-	*/
-}
+
+}*/
 
 .grid-pixel:hover {
 	box-sizing: border-box;
@@ -289,9 +289,6 @@ nav {
 	align-items: center;
 }
 
-.slider-menu {
-	
-}
 
 /*****************************************************************************
 ** HTML Page: Home
@@ -394,18 +391,6 @@ nav {
 		background-color:white;
 
 }
-/*
-.preview{
-	padding: 10px;
-}
-
-.preview-pixel{
-	font-size: 2.5px;
-	padding-right:3.5px;
-	background-color:blue;
-	color:blue;
-
-}*/
 
 /*Drawing Setting*/
 

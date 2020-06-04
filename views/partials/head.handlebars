@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" crossorigin="anonymous">
     <!-- Load in the style sheets. Requires a separate HTTP request -->
     <link rel="stylesheet" href="/style.css" media="screen">
-    <!-- Load in the JavaScript. Requires a separate HTTP request -->
+    <!-- Allow for template handlebars -->
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.runtime.js"></script>
     {{#if home}}
       <script src="/home.js" charset="utf-8" defer></script>
+      <script src="/previewDrawingTemplate.js" charset="utf-8" defer></script>
     {{else}}
       <script src="/index.js" charset="utf-8" defer></script>
     {{/if}}
