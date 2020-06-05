@@ -384,11 +384,11 @@ nav {
 .preview{
 	padding: 10px;
 	display: grid;
-	grid-template-columns: auto auto auto auto auto auto;
+
 }
 
 .preview-pixel{
-		background-color:white;
+		background-color:white;		
 
 }
 

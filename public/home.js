@@ -106,6 +106,8 @@ function renderPreview(preview){
 	var height= preview.parentNode.childNodes[5].childNodes[3].textContent;
 	var pixels= preview.parentNode.childNodes[5].childNodes[5].textContent;
 	var columns = '';
+	var rows = '';
+	var pixelSize;
 	for(var i = 0; i < height * width; i++){
 		var pixel = document.createElement('div');
 		pixel.classList.add('preview-pixel');
@@ -113,10 +115,21 @@ function renderPreview(preview){
 		pixel.style.backgroundColor = pixels.split(',')[i];
 		preview.appendChild(pixel);
 	}
-	for(var j = 0; j < width; j++){
-		columns += 'auto ';
+	if(width <= height){
+		pixelSize = 350/height;
 	}
-	preview.style.gridTemplateColumns = columns;	
+	else if(width > height){
+		pixelSize = 350/width;
+	}
+	for(var j = 0; j < width; j++){
+		columns += pixelSize + 'px ';
+	}
+	for(var j = 0; j < height; j++){
+		rows += pixelSize + 'px ';
+	}
+	preview.style.gridTemplateColumns = columns;
+	preview.style.gridTemplateRows = rows;	
+	
 }
 
 
