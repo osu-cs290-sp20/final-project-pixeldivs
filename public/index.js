@@ -44,8 +44,8 @@ modalAddButton.onclick = addColor;
 
 var modalColor = [0, 0, 0];
 
-fillGrid("rgb(256, 256, 256)");
-fillPalette();
+//fillGrid("rgb(256, 256, 256)");
+//fillPalette();
 
 /*****************************************************************************
 ** Function: addPixel
@@ -171,7 +171,7 @@ function addColor () {
 	modalColor[0] = rSlider.value;
 	modalColor[1] = gSlider.value;
 	modalColor[2] = bSlider.value;
-	var newColor = "rgb(" + modalColor[0] + ", " + modalColor[1] + ", " + 
+	var newColor = "rgb(" + modalColor[0] + ", " + modalColor[1] + ", " +
 					modalColor[2] + ")";
 	canvasColor.appendChild(addPixel(newColor, true));
 	palette.push(newColor);
@@ -228,7 +228,7 @@ function closeModal () {
 
 /*****************************************************************************
 ** Function: r_outputUpdate
-** Description: Updates the red value and modal preview with the slider's 
+** Description: Updates the red value and modal preview with the slider's
 ** value
 ** Parameters: value representing the exact numerical value
 ** Pre-Conditions: none
@@ -243,7 +243,7 @@ function r_outputUpdate(value) {
 
 /*****************************************************************************
 ** Function: g_outputUpdate
-** Description: Updates the green value and modal preview with the slider's 
+** Description: Updates the green value and modal preview with the slider's
 ** value
 ** Parameters: value representing the exact numerical value
 ** Pre-Conditions: none
@@ -258,7 +258,7 @@ function g_outputUpdate(value) {
 
 /*****************************************************************************
 ** Function: b_outputUpdate
-** Description: Updates the blue value and modal preview with the slider's 
+** Description: Updates the blue value and modal preview with the slider's
 ** value
 ** Parameters: value representing the exact numerical value
 ** Pre-Conditions: none
@@ -281,7 +281,7 @@ function b_outputUpdate(value) {
 ******************************************************************************/
 function updateModalPreview () {
 	var modalPreview = document.getElementById("modal-color-preview");
-	var newColor = "rgb(" + modalColor[0] + ", " + modalColor[1] + ", " + 
+	var newColor = "rgb(" + modalColor[0] + ", " + modalColor[1] + ", " +
 					modalColor[2] + ")";
 	modalPreview.style.background = newColor;
 }

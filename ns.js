@@ -31,8 +31,17 @@ app.get('/drawingpage', function (req, res, next) {
   res.render('drawingpage', {
     home:false,
   });
-
 });
+
+app.get('/drawings/:drawid', function (req, res, next) {
+  var drawid = req.params.drawid;
+  if (drawingData[drawid]) {
+    res.status(200).render('drawingpage', drawingData[drawid]);
+  } else {
+    next();
+  }
+});
+
 /* 404 page*/
 app.get('*', function (req, res, next) {
   res.status(404).render('404page');
@@ -41,4 +50,3 @@ app.get('*', function (req, res, next) {
 app.listen(port, function () {
   console.log("== Server is listening on port", port);
 });
-

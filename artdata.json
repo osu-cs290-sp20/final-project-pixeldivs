@@ -2,6 +2,7 @@
   {
     "title": "Colorful Lines",
     "width": "10",
+    "widthpx": "180px",
     "height": "10",
     "pixels": [
               "#e1812e", "#131a7c", "#ff198d", "#ff005d", "#0075ff", "#e1812e", "#131a7c", "#ff198d", "#ff005d", "#0075ff",
@@ -20,6 +21,7 @@
   {
     "title": "Orange and Green Pattern",
     "width": "5",
+    "widthpx": "90px",
     "height": "5",
     "pixels": [
               "#e1812e", "#ff7400", "#c0b8c3", "#968867", "#bca829",
@@ -33,6 +35,7 @@
   {
     "title": "Lines with Squares",
     "width": "5",
+    "widthpx": "90px",
     "height": "5",
     "pixels": [
               "#7fffd4", "#bc752b", "#ff198d", "#c0ffee", "#a4bdba",
@@ -46,6 +49,7 @@
   {
     "title": "Abstract",
     "width": "50",
+    "widthpx": "900px",
     "height": "50",
     "pixels": [
               "#e1812e", "#131a7c", "#ff198d", "#ff005d", "#0075ff", "#e1812e", "#131a7c", "#ff198d", "#ff005d", "#0075ff", "#e1812e", "#131a7c", "#ff198d", "#ff005d", "#0075ff", "#e1812e", "#131a7c", "#ff198d", "#ff005d", "#0075ff", "#e1812e", "#131a7c", "#ff198d", "#ff005d", "#0075ff", "#e1812e", "#131a7c", "#ff198d", "#ff005d", "#0075ff", "#e1812e", "#131a7c", "#ff198d", "#ff005d", "#0075ff", "#e1812e", "#131a7c", "#ff198d", "#ff005d", "#0075ff", "#e1812e", "#131a7c", "#ff198d", "#ff005d", "#0075ff", "#e1812e", "#131a7c", "#ff198d", "#ff005d", "#0075ff",
