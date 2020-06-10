@@ -23,10 +23,14 @@ var create_button = document.getElementsByClassName("modal-create-button");
 create_button[0].addEventListener('click', createDrawing);
 newDrawing[0].addEventListener('click', drawingSetting);
 searchdrawing.addEventListener('input', searchforDrawingTitle);
+updateRedirects();
 
-for (let j = 0; j < allDrawings.length; j++){
-	let drawing = allDrawings[j]; drawing.addEventListener('click', function() { selectDrawing(j); });
+function updateRedirects(){
+	for (let j = 0; j < allDrawings.length; j++){
+		let drawing = allDrawings[j]; drawing.addEventListener('click', function() { selectDrawing(j); });
+	}
 }
+
 
 for(var i = 0; i < allDrawings.length; i++){
 	//allDrawings[i].addEventListener('click', function(){selectDrawing(i)});
@@ -65,7 +69,7 @@ function createDrawing(event){
 	for(var i = 0; i < choosenWidth * choosenHeight; i++){
 		pixelArr.push('#FFFFFF');
 	}
-	
+
 	var squareSize = 75;
 	if (600/choosenWidth > 600/choosenHeight) {
 		squareSize = 600/choosenHeight;
@@ -74,7 +78,7 @@ function createDrawing(event){
 		squareSize = 600/choosenWidth;
 	}
 	var gridSizePx = squareSize * choosenHeight + 'px';
-	
+
 	var newDrawing = {
 		title: customizedTitle.value,
 		width: choosenWidth,
@@ -90,6 +94,7 @@ function createDrawing(event){
 	renderPreview(drawingPreviews[drawingPreviews.length - 1]);
 	saveDrawing(newDrawing);
 	//window.location.href = "drawingpage";
+	updateRedirects();
 
 }
 
