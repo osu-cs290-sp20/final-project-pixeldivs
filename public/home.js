@@ -61,12 +61,24 @@ function createDrawing(event){
 	for(var i = 0; i < choosenWidth * choosenHeight; i++){
 		pixelArr.push('#FFFFFF');
 	}
+	
+	var squareSize = 75;
+	if (600/choosenWidth > 600/choosenHeight) {
+		squareSize = 600/choosenHeight;
+	}
+	else {
+		squareSize = 600/choosenWidth;
+	}
+	var gridSizePx = squareSize * choosenHeight + 'px';
+	
 	var newDrawing = {
 		title: customizedTitle.value,
 		width: choosenWidth,
 		height: choosenHeight,
 		pixels: pixelArr,
-		palette: standardPalette
+		palette: standardPalette,
+		pixelSize: squareSize,
+		widthpx: gridSizePx
 	}
 	console.log("*********TITLE", newDrawing.title);
 	var newDrawinghtml = Handlebars.templates.newDrawing(newDrawing);
@@ -87,7 +99,9 @@ function saveDrawing(drawing){
 		width: drawing.width,
 		height: drawing.height,
 		pixels: drawing.pixels,
-		palette: drawing.palette
+		palette: drawing.palette,
+		pixelSize: drawing.pixelSize,
+		widthpx: drawing.widthpx
 	});
 
 	request.setRequestHeader(
