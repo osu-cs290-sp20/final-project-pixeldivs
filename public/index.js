@@ -47,8 +47,24 @@ saveButton.onclick = saveDrawing;
 
 var modalColor = [0, 0, 0];
 
-fillGrid("rgb(256, 256, 256)");
-fillPalette();
+function start (width, height) {
+	gridWidth = width;
+	gridHeight = height;
+	console.log("Is it working?");
+	console.log(arrayOfGridPixels);
+	console.log(arrayOfPalettePixels);
+	loadDrawing();
+	fillPalette();
+}
+
+
+function loadDrawing () {
+	var grid = document.getElementById("grid");
+	for (var i=0; i < arrayOfGridPixels.length; i++) {
+		grid.appendChild(addPixel(arrayOfGridPixels[i], false));
+	}
+}
+
 
 /*****************************************************************************
 ** Function: addPixel
@@ -110,6 +126,19 @@ function addColumn (element, color) {
 ** Post-conditions: Grid filled with the designated color
 *****************************************************************************/
 function fillGrid (color) {
+	var grid = document.getElementById('grid');
+	for (var i=0; i < gridWidth*gridHeight; i++) {
+		grid.appendChild(addPixel(color, false));
+	}
+	var squareSize = 75;
+	if (600/gridWidth > 600/gridHeight) {
+		squareSize = 600/gridHeight;
+	}
+	else {
+		squareSize = 600/gridWidth;
+	}
+	grid.style.width = squareSize * gridWidth + 'px';
+	/*
 	var colorArray = [];
 	var colorCol = [];
 	for (var i=0; i < gridHeight; i++) {
@@ -119,10 +148,13 @@ function fillGrid (color) {
 		}
 		colorArray.push(colorCol);
 	}
+	*/
 	/* Upon loading the script, fill the grid with pixels */
+	/*
 	for (var i=0; i < gridHeight; i++) {
 		addColumn("grid", colorArray[i]);
 	}
+	*/
 }
 
 
@@ -138,6 +170,9 @@ function fillPalette () {
 	for (var i=0; i < palette.length; i++) {
 		canvasColor.appendChild(addPixel(palette[i], true));
 	}
+	for (var i=0; i < arrayOfPalettePixels.length; i++) {
+		canvasColor.appendChild(addPixel(arrayOfPalettePixels[i], true));
+	}
 }
 
 
@@ -150,11 +185,16 @@ function fillPalette () {
 *****************************************************************************/
 function clearGrid (color) {
 	var grid = document.getElementById("grid");
+	for (var i=0; i < gridWidth*gridHeight; i++) {
+			grid.children[i].style.background = color;
+	}
+	/*
 	for (var i=0; i < gridHeight; i++) {
 		for (var j=0; j < gridWidth; j++) {
 			grid.children[i].children[j].style.background = color;
 		}
 	}
+	*/
 }
 
 
@@ -174,7 +214,7 @@ function addColor () {
 	modalColor[0] = rSlider.value;
 	modalColor[1] = gSlider.value;
 	modalColor[2] = bSlider.value;
-	var newColor = "rgb(" + modalColor[0] + ", " + modalColor[1] + ", " + 
+	var newColor = "rgb(" + modalColor[0] + ", " + modalColor[1] + ", " +
 					modalColor[2] + ")";
 	canvasColor.appendChild(addPixel(newColor, true));
 	palette.push(newColor);
@@ -231,7 +271,7 @@ function closeModal () {
 
 /*****************************************************************************
 ** Function: r_outputUpdate
-** Description: Updates the red value and modal preview with the slider's 
+** Description: Updates the red value and modal preview with the slider's
 ** value
 ** Parameters: value representing the exact numerical value
 ** Pre-Conditions: none
@@ -246,7 +286,7 @@ function r_outputUpdate(value) {
 
 /*****************************************************************************
 ** Function: g_outputUpdate
-** Description: Updates the green value and modal preview with the slider's 
+** Description: Updates the green value and modal preview with the slider's
 ** value
 ** Parameters: value representing the exact numerical value
 ** Pre-Conditions: none
@@ -261,7 +301,7 @@ function g_outputUpdate(value) {
 
 /*****************************************************************************
 ** Function: b_outputUpdate
-** Description: Updates the blue value and modal preview with the slider's 
+** Description: Updates the blue value and modal preview with the slider's
 ** value
 ** Parameters: value representing the exact numerical value
 ** Pre-Conditions: none
@@ -284,7 +324,7 @@ function b_outputUpdate(value) {
 ******************************************************************************/
 function updateModalPreview () {
 	var modalPreview = document.getElementById("modal-color-preview");
-	var newColor = "rgb(" + modalColor[0] + ", " + modalColor[1] + ", " + 
+	var newColor = "rgb(" + modalColor[0] + ", " + modalColor[1] + ", " +
 					modalColor[2] + ")";
 	modalPreview.style.background = newColor;
 }

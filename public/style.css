@@ -144,7 +144,9 @@ nav {
 }
 
 #grid {
-	display: inline-block;
+	/*display: inline-block;*/
+	display: flex;
+	flex-wrap: wrap;
 	margin: 10px auto;
 	border: 1px solid black;
 }
@@ -351,7 +353,7 @@ nav {
 	height:350px;
 	background-color: #dadada;
 	border-radius: 5px;
-	
+
 }
 .title-drawings{
 	width:350px;
@@ -388,7 +390,7 @@ nav {
 }
 
 .preview-pixel{
-		background-color:white;		
+		background-color:white;
 
 }
 

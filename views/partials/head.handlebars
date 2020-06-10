@@ -13,7 +13,25 @@
       <script src="/home.js" charset="utf-8" defer></script>
       <script src="/previewDrawingTemplate.js" charset="utf-8" defer></script>
     {{else}}
-      <script src="/index.js" charset="utf-8" defer></script>
+    	<script>
+    	var arrayOfGridPixels = [];
+    	var arrayOfPalettePixels = [];
+    	</script>
+		{{#if new}}
+			<script src="/index.js" charset="utf-8" onload="fillGrid('#ffffff');fillPalette();" defer></script>
+		{{else}}
+			<script>
+			{{#each pixels}}
+			arrayOfGridPixels.push('{{this}}');
+			{{/each}}
+
+			
+			{{#each palette}}
+			arrayOfPalettePixels.push('{{this}}');
+			{{/each}}
+			</script>
+			<script src="/index.js" charset="utf-8" onload="start({{width}}, {{height}});" defer></script>
+		{{/if}}
     {{/if}}
     <title>Pixeldivs</title>
 </head>

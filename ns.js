@@ -16,6 +16,7 @@ app.get('/', function (req, res, next) {
   res.render('homepage', {
 		drawing: drawingData,
     home:true,
+    alreadyCreated:true
 	});
 
 });
@@ -23,9 +24,19 @@ app.get('/', function (req, res, next) {
 app.get('/drawingpage', function (req, res, next) {
   res.render('drawingpage', {
     home:false,
+    new:true
   });
-
 });
+
+app.get('/drawings/:drawid', function (req, res, next) {
+  var drawid = req.params.drawid;
+  if (drawingData[drawid]) {
+    res.status(200).render('drawingpage', drawingData[drawid]);
+  } else {
+    next();
+  }
+});
+
 /* 404 page*/
 app.get('*', function (req, res, next) {
   res.status(404).render('404page');
