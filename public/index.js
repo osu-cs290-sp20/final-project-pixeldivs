@@ -7,9 +7,6 @@
 
 
 /* Global variable */
-
-
-
 var currentColor = "rgb(0, 0, 0)";
 var gridWidth = 16;
 var gridHeight = 32;
@@ -126,6 +123,19 @@ function addColumn (element, color) {
 ** Post-conditions: Grid filled with the designated color
 *****************************************************************************/
 function fillGrid (color) {
+	var grid = document.getElementById('grid');
+	for (var i=0; i < gridWidth*gridHeight; i++) {
+		grid.appendChild(addPixel(color, false));
+	}
+	var squareSize = 75;
+	if (600/gridWidth > 600/gridHeight) {
+		squareSize = 600/gridHeight;
+	}
+	else {
+		squareSize = 600/gridWidth;
+	}
+	grid.style.width = squareSize * gridWidth + 'px';
+	/*
 	var colorArray = [];
 	var colorCol = [];
 	for (var i=0; i < gridHeight; i++) {
@@ -135,10 +145,13 @@ function fillGrid (color) {
 		}
 		colorArray.push(colorCol);
 	}
+	*/
 	/* Upon loading the script, fill the grid with pixels */
+	/*
 	for (var i=0; i < gridHeight; i++) {
 		addColumn("grid", colorArray[i]);
 	}
+	*/
 }
 
 
