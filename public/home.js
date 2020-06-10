@@ -24,9 +24,13 @@ create_button[0].addEventListener('click', createDrawing);
 newDrawing[0].addEventListener('click', drawingSetting);
 searchdrawing.addEventListener('input', searchforDrawingTitle);
 
+for (let j = 0; j < allDrawings.length; j++){
+	let drawing = allDrawings[j]; drawing.addEventListener('click', function() { selectDrawing(j); });
+}
+
 for(var i = 0; i < allDrawings.length; i++){
-	allDrawings[i].addEventListener('click', selectDrawing);
-	renderPreview(drawingPreviews[i])
+	//allDrawings[i].addEventListener('click', function(){selectDrawing(i)});
+	renderPreview(drawingPreviews[i]);
 	//drawingPreviews[i].addEventListener( renderPreview);
 }
 
@@ -54,7 +58,7 @@ function createDrawing(event){
 	}
 	var choosenWidth = document.getElementById('width-range').value;
 	var choosenHeight = document.getElementById('height-range').value;
-	var standardPalette = ['#000000', '#ff0000', '#00ff00', '#0000ff', '#ffffff', '#00ffff', '#ff00ff', '#ffff00']; 
+	var standardPalette = ['#000000', '#ff0000', '#00ff00', '#0000ff', '#ffffff', '#00ffff', '#ff00ff', '#ffff00'];
 	var pixelArr = [];
 
 
@@ -153,8 +157,8 @@ function renderPreview(preview){
 		rows += pixelSize + 'px ';
 	}
 	preview.style.gridTemplateColumns = columns;
-	preview.style.gridTemplateRows = rows;	
-	
+	preview.style.gridTemplateRows = rows;
+
 }
 
 
@@ -166,8 +170,9 @@ function renderPreview(preview){
 ** Post-conditions: Drawing page is open instead, index.html
 *****************************************************************************/
 
-function selectDrawing(event){
-	window.location.href = "drawingpage";
+function selectDrawing(index){
+	console.log(index);
+	window.location.href = "/drawings/"+index;
 	/* Need databases to finish implementing this function */
 }
 
