@@ -23,6 +23,7 @@ app.get('/', function (req, res, next) {
   res.render('homepage', {
 		drawing: drawingData,
     home:true,
+    alreadyCreated:true
 	});
 
 });
@@ -30,6 +31,7 @@ app.get('/', function (req, res, next) {
 app.get('/drawingpage', function (req, res, next) {
   res.render('drawingpage', {
     home:false,
+    new:true
   });
 });
 

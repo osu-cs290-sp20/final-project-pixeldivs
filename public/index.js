@@ -7,6 +7,9 @@
 
 
 /* Global variable */
+
+
+
 var currentColor = "rgb(0, 0, 0)";
 var gridWidth = 16;
 var gridHeight = 32;
@@ -44,8 +47,24 @@ modalAddButton.onclick = addColor;
 
 var modalColor = [0, 0, 0];
 
-//fillGrid("rgb(256, 256, 256)");
-//fillPalette();
+function start (width, height) {
+	gridWidth = width;
+	gridHeight = height;
+	console.log("Is it working?");
+	console.log(arrayOfGridPixels);
+	console.log(arrayOfPalettePixels);
+	loadDrawing();
+	fillPalette();
+}
+
+
+function loadDrawing () {
+	var grid = document.getElementById("grid");
+	for (var i=0; i < arrayOfGridPixels.length; i++) {
+		grid.appendChild(addPixel(arrayOfGridPixels[i], false));
+	}
+}
+
 
 /*****************************************************************************
 ** Function: addPixel
@@ -135,6 +154,9 @@ function fillPalette () {
 	for (var i=0; i < palette.length; i++) {
 		canvasColor.appendChild(addPixel(palette[i], true));
 	}
+	for (var i=0; i < arrayOfPalettePixels.length; i++) {
+		canvasColor.appendChild(addPixel(arrayOfPalettePixels[i], true));
+	}
 }
 
 
@@ -147,11 +169,16 @@ function fillPalette () {
 *****************************************************************************/
 function clearGrid (color) {
 	var grid = document.getElementById("grid");
+	for (var i=0; i < gridWidth*gridHeight; i++) {
+			grid.children[i].style.background = color;
+	}
+	/*
 	for (var i=0; i < gridHeight; i++) {
 		for (var j=0; j < gridWidth; j++) {
 			grid.children[i].children[j].style.background = color;
 		}
 	}
+	*/
 }
 
 

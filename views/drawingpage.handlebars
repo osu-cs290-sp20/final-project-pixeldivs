@@ -11,32 +11,35 @@
     </div>
     <a href = ".">Create New Project</a>
 </nav>
+
+<style>
+.grid-pixel {
+	width:{{pixelSize}};
+	height: {{pixelSize}};
+	background: #ffffff;
+}
+</style>
+
 <div id="main">
   <div id="canvas-grid">
     <p class="canvas-label"> {{title}}</p>
     <div id="canvas">
-      <div id="grid" style="width: {{widthpx}}">
+      <div id="grid" style="width: {{widthpx}};">
+      <!--
         {{#each pixels}}
-          <div class = "grid-pixel" style="background:{{this}}; width:18px; height:18px;">
-          </div>
+          <div class = "grid-pixel" style="background:{{this}};"></div>
         {{/each}}
+        -->
       </div>
     </div>
   </div>
   <div id="canvas-color">
-    <!-- <p class="canvas-label">Color Palette</p>-->
     <div id="palette">
+    <!--
       {{#each palette}}
-        <!--
-        <script type = "text/javascript">
-          addPixel({{this}}, true);
-        </script>
-        -->
-
-        <div class="palette-pixel" style="background:{{this}}">
-        </div>
-
+        <div class="palette-pixel" style="background:{{this}};"></div>
       {{/each}}
+      -->
     </div>
     <i id="add-button" class="fas fa-plus"></i>
     <div id="fill-button" onclick="clearGrid(currentColor);">
