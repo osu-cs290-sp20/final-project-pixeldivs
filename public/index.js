@@ -291,7 +291,22 @@ function updateModalPreview () {
 
 
 function saveDrawing(){
-	
+	var request = new XMLHttpRequest();
+	var requestUrl = '/drawingpage/save';
+	request.open('POST', requestUrl);
+	var requestBody = JSON.stringify({
+		title: drawing.title,
+		width: drawing.width,
+		height: drawing.height,
+		pixels: drawing.pixels,
+		palette: drawing.palette
+	});
+
+	request.setRequestHeader(
+		'Content-Type',
+		'application/json'
+	);
+	request.send(requestBody);
 }
 
 

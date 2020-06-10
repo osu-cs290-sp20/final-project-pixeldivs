@@ -35,10 +35,20 @@ app.listen(port, function () {
   console.log("== Server is listening on port", port);
 });
 
-app.post('/drawingpage/save', function(req, res, next){
+app.post('/home/save', function(req, res, next){
   console.log(req.body);
  drawingData.push(req.body)
  console.log('drawing data ****', drawingData);
  fs.writeFileSync('./artdata.json', JSON.stringify(drawingData));
  res.status(200).send("Drawing successfully added");
 })
+
+app.post('/drawingpage/save', function(req, res, next){
+  console.log(req.body);
+  var i = 0;
+ drawingData[i]= req.body
+ console.log('drawing data ****', drawingData);
+ fs.writeFileSync('./artdata.json', JSON.stringify(drawingData));
+ res.status(200).send("Drawing successfully added");
+})
+

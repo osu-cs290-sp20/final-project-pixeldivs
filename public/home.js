@@ -72,14 +72,15 @@ function createDrawing(event){
 	var newDrawinghtml = Handlebars.templates.newDrawing(newDrawing);
 	drawingContainer.insertAdjacentHTML('beforeend', newDrawinghtml);
 	renderPreview(drawingPreviews[drawingPreviews.length - 1]);
-	//window.location.href = "drawingpage";
 	saveDrawing(newDrawing);
+	//window.location.href = "drawingpage";
+
 }
 
 
 function saveDrawing(drawing){
 	var request = new XMLHttpRequest();
-	var requestUrl = '/drawingpage/save';
+	var requestUrl = '/home/save';
 	request.open('POST', requestUrl);
 	var requestBody = JSON.stringify({
 		title: drawing.title,
@@ -94,8 +95,6 @@ function saveDrawing(drawing){
 		'application/json'
 	);
 	request.send(requestBody);
-
-	
 }
 
 
