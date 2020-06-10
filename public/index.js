@@ -42,6 +42,9 @@ closeButton.onclick = closeModal;
 var modalAddButton = document.getElementById("modal-add-button");
 modalAddButton.onclick = addColor;
 
+var saveButton = document.getElementById('save-button');
+saveButton.onclick = saveDrawing;
+
 var modalColor = [0, 0, 0];
 
 fillGrid("rgb(256, 256, 256)");
@@ -285,5 +288,13 @@ function updateModalPreview () {
 					modalColor[2] + ")";
 	modalPreview.style.background = newColor;
 }
+
+
+function saveDrawing(){
+	
+}
+
+
+
 
 // END OF FILE

@@ -42,11 +42,13 @@ function createDrawing(event){
 	setting_modal[0].style.display = 'none';
 	setting_modal[1].style.display = 'none';
 	var customizedTitle = document.getElementById('title-input');
-	if(customizedTitle.value == null || customizedTitle.value == '\n' ||  customizedTitle.value == "" || customizedTitle.length == undefined){
+
+
+	if(customizedTitle == null || customizedTitle.value == '\n' || customizedTitle.value == '' || customizedTitle.value == ' '){
 		if( newDrawingCount === 0){
-			customizedTitle = 'Untitled Drawing'
+			customizedTitle.value = 'Untitled Drawing'
 		}else{
-			customizedTitle = 'Untitled Drawing ' + newDrawingCount;
+			customizedTitle.value = 'Untitled Drawing ' + newDrawingCount;
 			newDrawingCount++;
 		}
 	}
@@ -60,18 +62,42 @@ function createDrawing(event){
 		pixelArr.push('#FFFFFF');
 	}
 	var newDrawing = {
-		title: customizedTitle,
+		title: customizedTitle.value,
 		width: choosenWidth,
 		height: choosenHeight,
 		pixels: pixelArr,
 		palette: standardPalette
 	}
+	console.log("*********TITLE", newDrawing.title);
 	var newDrawinghtml = Handlebars.templates.newDrawing(newDrawing);
 	drawingContainer.insertAdjacentHTML('beforeend', newDrawinghtml);
 	renderPreview(drawingPreviews[drawingPreviews.length - 1]);
-
-	window.location.href = "drawingpage";
+	//window.location.href = "drawingpage";
+	saveDrawing(newDrawing);
 }
+
+
+function saveDrawing(drawing){
+	var request = new XMLHttpRequest();
+	var requestUrl = '/drawingpage/save';
+	request.open('POST', requestUrl);
+	var requestBody = JSON.stringify({
+		title: drawing.title,
+		width: drawing.width,
+		height: drawing.height,
+		pixels: drawing.pixels,
+		palette: drawing.palette
+	});
+
+	request.setRequestHeader(
+		'Content-Type',
+		'application/json'
+	);
+	request.send(requestBody);
+
+	
+}
+
 
 /*****************************************************************************
 ** Function: searchDrawing
