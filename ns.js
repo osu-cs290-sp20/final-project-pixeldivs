@@ -25,7 +25,6 @@ app.get('/', function (req, res, next) {
 app.get('/drawings/:drawid', function (req, res, next) {
   var drawid = req.params.drawid;
   if (drawingData[drawid]) {
-    //console.log(drawingData[drawid]);
 
     res.status(200).render('drawingpage', drawingData[drawid]);
   } else {
@@ -51,11 +50,9 @@ app.post('/home/save', function(req, res, next){
 app.post('/drawings/:drawid/save', function (req, res, next) {
   var drawid = req.params.drawid;
   var id = parseInt(drawid)
-  console.log('test');
-    drawingData[id].pixels = req.body.pixels
-    console.log(drawingData);
-    fs.writeFileSync('./artdata.json', JSON.stringify(drawingData));
-    res.status(200).send("Drawing successfully added");
+  drawingData[id].pixels = req.body.pixels
+  fs.writeFileSync('./artdata.json', JSON.stringify(drawingData));
+  res.status(200).send("Drawing successfully added");
  
 });
 
