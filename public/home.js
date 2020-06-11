@@ -33,9 +33,7 @@ function updateRedirects(){
 
 
 for(var i = 0; i < allDrawings.length; i++){
-	//allDrawings[i].addEventListener('click', function(){selectDrawing(i)});
 	renderPreview(drawingPreviews[i]);
-	//drawingPreviews[i].addEventListener( renderPreview);
 }
 
 
