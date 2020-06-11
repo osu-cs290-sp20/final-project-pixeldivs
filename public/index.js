@@ -346,9 +346,10 @@ function saveDrawing(){
 	request.open('POST', requestUrl);
 	var grid = document.getElementById("grid");
 	var pixelsColors = [];
-
+	var hexColor;
 	for (var i=0; i < gridWidth*gridHeight; i++) {
-		pixelsColors.push(grid.children[i].style.backgroundColor);
+		hexColor = RGBToHex(grid.children[i].style.backgroundColor);
+		pixelsColors.push(hexColor);
 	}
 	
 	var requestBody = JSON.stringify({
