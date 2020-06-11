@@ -23,10 +23,19 @@ var create_button = document.getElementsByClassName("modal-create-button");
 create_button[0].addEventListener('click', createDrawing);
 newDrawing[0].addEventListener('click', drawingSetting);
 searchdrawing.addEventListener('input', searchforDrawingTitle);
+updateRedirects();
+
+function updateRedirects(){
+	for (let j = 0; j < allDrawings.length; j++){
+		let drawing = allDrawings[j]; drawing.addEventListener('click', function() { selectDrawing(j); });
+	}
+}
+
 
 for(var i = 0; i < allDrawings.length; i++){
-	allDrawings[i].addEventListener('click', selectDrawing);
-	renderPreview(drawingPreviews[i])
+	//allDrawings[i].addEventListener('click', function(){selectDrawing(i)});
+	renderPreview(drawingPreviews[i]);
+	//drawingPreviews[i].addEventListener( renderPreview);
 }
 
 
@@ -53,25 +62,37 @@ function createDrawing(event){
 	}
 	var choosenWidth = document.getElementById('width-range').value;
 	var choosenHeight = document.getElementById('height-range').value;
-	var standardPalette = ['#000000', '#ff0000', '#00ff00', '#0000ff', '#ffffff', '#00ffff', '#ff00ff', '#ffff00']; 
+	var standardPalette = ['#000000', '#ff0000', '#00ff00', '#0000ff', '#ffffff', '#00ffff', '#ff00ff', '#ffff00'];
 	var pixelArr = [];
 
 
 	for(var i = 0; i < choosenWidth * choosenHeight; i++){
 		pixelArr.push('#FFFFFF');
 	}
+
+	var squareSize = 75;
+	if (600/choosenWidth > 600/choosenHeight) {
+		squareSize = 600/choosenHeight;
+	}
+	else {
+		squareSize = 600/choosenWidth;
+	}
+	var gridSizePx = squareSize * choosenWidth + 'px';
 	var newDrawing = {
 		title: customizedTitle.value,
 		width: choosenWidth,
 		height: choosenHeight,
 		pixels: pixelArr,
-		palette: standardPalette
+		palette: standardPalette,
+		pixelSize: squareSize,
+		widthpx: gridSizePx
 	}
 	var newDrawinghtml = Handlebars.templates.newDrawing(newDrawing);
 	drawingContainer.insertAdjacentHTML('beforeend', newDrawinghtml);
 	renderPreview(drawingPreviews[drawingPreviews.length - 1]);
 	saveDrawing(newDrawing);
 	//window.location.href = "drawingpage";
+	updateRedirects();
 
 }
 
@@ -85,7 +106,9 @@ function saveDrawing(drawing){
 		width: drawing.width,
 		height: drawing.height,
 		pixels: drawing.pixels,
-		palette: drawing.palette
+		palette: drawing.palette,
+		pixelSize: drawing.pixelSize,
+		widthpx: drawing.widthpx
 	});
 
 	request.setRequestHeader(
@@ -151,8 +174,8 @@ function renderPreview(preview){
 		rows += pixelSize + 'px ';
 	}
 	preview.style.gridTemplateColumns = columns;
-	preview.style.gridTemplateRows = rows;	
-	
+	preview.style.gridTemplateRows = rows;
+
 }
 
 
@@ -164,8 +187,9 @@ function renderPreview(preview){
 ** Post-conditions: Drawing page is open instead, index.html
 *****************************************************************************/
 
-function selectDrawing(event){
-	window.location.href = "drawingpage";
+function selectDrawing(index){
+	console.log(index);
+	window.location.href = "/drawings/"+index;
 	/* Need databases to finish implementing this function */
 }
 
@@ -184,10 +208,10 @@ function drawingSetting(event){
 	//close
 	close_button[0].addEventListener('click', function(){
 		document.querySelector('#title-input').value = "";
-		document.querySelector('#width-range').value = 50;
-		document.querySelector('#height-range').value = 50;
-		document.querySelector('#w_volume').value = 50;
-		document.querySelector('#h_volume').value = 50;
+		document.querySelector('#width-range').value = 4;
+		document.querySelector('#height-range').value = 4;
+		document.querySelector('#w_volume').value = 4;
+		document.querySelector('#h_volume').value = 4;
 		setting_modal[0].style.display = 'none';
 		setting_modal[1].style.display = 'none';
 	})
