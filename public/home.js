@@ -42,32 +42,27 @@ for(var i = 0; i < allDrawings.length; i++){
 ** Description: Adds a new drawing to the home gallery when the user clicks on the plus button and renders a preview
 ** Parameters: None
 ** Pre-coditions: User clicks on add a new drawing
-** Post-conditions: A new drawing is created in the gallery and the user is redirected to the drawing page
+** Post-conditions: A new drawing is created in the gallery
 *****************************************************************************/
 function createDrawing(event){
+	//Closes Modal
 	setting_modal[0].style.display = 'none';
 	setting_modal[1].style.display = 'none';
+
+	//Reads in all the inputed data to the modal
 	var customizedTitle = document.getElementById('title-input');
-
-
-	if(customizedTitle == null || customizedTitle.value == '\n' || customizedTitle.value == '' || customizedTitle.value == ' '){
-		if( newDrawingCount === 0){
-			customizedTitle.value = 'Untitled Drawing'
-		}else{
-			customizedTitle.value = 'Untitled Drawing ' + newDrawingCount;
-			newDrawingCount++;
-		}
-	}
+	if(customizedTitle == null || customizedTitle.value == '\n' || customizedTitle.value == '' || customizedTitle.value == ' ')
+		customizedTitle.value = 'Untitled Drawing';
 	var choosenWidth = document.getElementById('width-range').value;
 	var choosenHeight = document.getElementById('height-range').value;
-	var standardPalette = ['#000000', '#ff0000', '#00ff00', '#0000ff', '#ffffff', '#00ffff', '#ff00ff', '#ffff00'];
 	var pixelArr = [];
 
-
+	//White background color for all pixels
 	for(var i = 0; i < choosenWidth * choosenHeight; i++){
 		pixelArr.push('#FFFFFF');
 	}
 
+	//Sets the pixel size
 	var squareSize = 75;
 	if (600/choosenWidth > 600/choosenHeight) {
 		squareSize = 600/choosenHeight;
@@ -76,25 +71,34 @@ function createDrawing(event){
 		squareSize = 600/choosenWidth;
 	}
 	var gridSizePx = squareSize * choosenWidth + 'px';
+	
+	//Object pushed
 	var newDrawing = {
 		title: customizedTitle.value,
 		width: choosenWidth,
 		height: choosenHeight,
 		pixels: pixelArr,
-		palette: standardPalette,
+		palette: [],
 		pixelSize: squareSize,
 		widthpx: gridSizePx
 	}
+	//Creates the object on the client side
 	var newDrawinghtml = Handlebars.templates.newDrawing(newDrawing);
 	drawingContainer.insertAdjacentHTML('beforeend', newDrawinghtml);
+	
 	renderPreview(drawingPreviews[drawingPreviews.length - 1]);
 	saveDrawing(newDrawing);
-	//window.location.href = "drawingpage";
 	updateRedirects();
 
 }
 
-
+/*****************************************************************************
+** Function: saveDrawing
+** Description: Saves a new drawing to the drawing to the JSON database
+** Parameters: None
+** Pre-coditions: User clicks on add a new drawing
+** Post-conditions: A new drawing is created in the gallery 
+*****************************************************************************/
 function saveDrawing(drawing){
 	var request = new XMLHttpRequest();
 	var requestUrl = '/home/save';

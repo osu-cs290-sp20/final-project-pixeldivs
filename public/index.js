@@ -138,23 +138,6 @@ function fillGrid (color) {
 		squareSize = 600/gridWidth;
 	}
 	grid.style.width = squareSize * gridWidth + 'px';
-	/*
-	var colorArray = [];
-	var colorCol = [];
-	for (var i=0; i < gridHeight; i++) {
-		colorCol = [];
-		for (var j=0; j < gridWidth; j++) {
-			colorCol.push(color);
-		}
-		colorArray.push(colorCol);
-	}
-	*/
-	/* Upon loading the script, fill the grid with pixels */
-	/*
-	for (var i=0; i < gridHeight; i++) {
-		addColumn("grid", colorArray[i]);
-	}
-	*/
 }
 
 
@@ -329,6 +312,13 @@ function updateModalPreview () {
 	modalPreview.style.background = newColor;
 }
 
+/*****************************************************************************
+** Function: getDrawIDFromURL
+** Description: Gets the id of the drawing open
+** Parameters: none
+** Pre-Conditions: URL
+** Post-Conditions: returns the id
+******************************************************************************/
 function getDrawIDFromURL() {
 	var path = window.location.pathname;
 	var pathParts = path.split('/');
@@ -339,6 +329,14 @@ function getDrawIDFromURL() {
 	}
 
 }
+
+/*****************************************************************************
+** Function: saveDrawing
+** Description: saves the edited version of the drawing
+** Parameters: none
+** Pre-Conditions: URL of the requess
+** Post-Conditions: none
+******************************************************************************/
 function saveDrawing(){
 
 	var request = new XMLHttpRequest();

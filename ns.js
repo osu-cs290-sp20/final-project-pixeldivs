@@ -3,15 +3,16 @@ var express = require('express');
 var exphbs = require('express-handlebars');
 var drawingData = require('./artdata.json');
 var fs = require('fs');
-
 var bodyParser = require('body-parser');
 var app = express();
 var port = process.env.PORT || 8000;
+
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 app.use(express.static('public'));
 app.use(express.json());
 app.use(bodyParser.json());
+
 app.get('/', function (req, res, next) {
   res.render('homepage', {
 		drawing: drawingData,
@@ -20,14 +21,7 @@ app.get('/', function (req, res, next) {
 	});
 
 });
-/*
-app.get('/drawingpage', function (req, res, next) {
-  res.render('drawingpage', {
-    home:false,
-    new:true
-  });
-});
-*/
+
 app.get('/drawings/:drawid', function (req, res, next) {
   var drawid = req.params.drawid;
   if (drawingData[drawid]) {
@@ -49,10 +43,9 @@ app.listen(port, function () {
 });
 
 app.post('/home/save', function(req, res, next){
-  //console.log(req.body);
- drawingData.push(req.body)
- fs.writeFileSync('./artdata.json', JSON.stringify(drawingData));
- res.status(200).send("Drawing successfully added");
+  drawingData.push(req.body)
+  fs.writeFileSync('./artdata.json', JSON.stringify(drawingData));
+  res.status(200).send("Drawing successfully added");
 })
 
 app.post('/drawings/:drawid/save', function (req, res, next) {
