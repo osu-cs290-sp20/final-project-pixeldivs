@@ -27,7 +27,6 @@ searchdrawing.addEventListener('input', searchforDrawingTitle);
 for(var i = 0; i < allDrawings.length; i++){
 	allDrawings[i].addEventListener('click', selectDrawing);
 	renderPreview(drawingPreviews[i])
-	//drawingPreviews[i].addEventListener( renderPreview);
 }
 
 
@@ -68,7 +67,6 @@ function createDrawing(event){
 		pixels: pixelArr,
 		palette: standardPalette
 	}
-	console.log("*********TITLE", newDrawing.title);
 	var newDrawinghtml = Handlebars.templates.newDrawing(newDrawing);
 	drawingContainer.insertAdjacentHTML('beforeend', newDrawinghtml);
 	renderPreview(drawingPreviews[drawingPreviews.length - 1]);

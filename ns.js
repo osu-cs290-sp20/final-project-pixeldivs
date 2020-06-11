@@ -20,17 +20,19 @@ app.get('/', function (req, res, next) {
 	});
 
 });
-
+/*
 app.get('/drawingpage', function (req, res, next) {
   res.render('drawingpage', {
     home:false,
     new:true
   });
 });
-
+*/
 app.get('/drawings/:drawid', function (req, res, next) {
   var drawid = req.params.drawid;
   if (drawingData[drawid]) {
+    //console.log(drawingData[drawid]);
+
     res.status(200).render('drawingpage', drawingData[drawid]);
   } else {
     next();
@@ -47,19 +49,20 @@ app.listen(port, function () {
 });
 
 app.post('/home/save', function(req, res, next){
-  console.log(req.body);
+  //console.log(req.body);
  drawingData.push(req.body)
- console.log('drawing data ****', drawingData);
  fs.writeFileSync('./artdata.json', JSON.stringify(drawingData));
  res.status(200).send("Drawing successfully added");
 })
 
-app.post('/drawingpage/save', function(req, res, next){
-  console.log(req.body);
-  var i = 0;
- drawingData[i]= req.body
- console.log('drawing data ****', drawingData);
- fs.writeFileSync('./artdata.json', JSON.stringify(drawingData));
- res.status(200).send("Drawing successfully added");
-})
+app.post('/drawings/:drawid/save', function (req, res, next) {
+  var drawid = req.params.drawid;
+  var id = parseInt(drawid)
+  console.log('test');
+    drawingData[id].pixels = req.body.pixels
+    console.log(drawingData);
+    fs.writeFileSync('./artdata.json', JSON.stringify(drawingData));
+    res.status(200).send("Drawing successfully added");
+ 
+});
 

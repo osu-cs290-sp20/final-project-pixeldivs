@@ -10,6 +10,7 @@
 var currentColor = "rgb(0, 0, 0)";
 var gridWidth = 16;
 var gridHeight = 32;
+var squareSize = 75;
 var palette = [
 	"rgb(0,0,0)",
 	"rgb(256, 256, 256)",
@@ -130,7 +131,6 @@ function fillGrid (color) {
 	for (var i=0; i < gridWidth*gridHeight; i++) {
 		grid.appendChild(addPixel(color, false));
 	}
-	var squareSize = 75;
 	if (600/gridWidth > 600/gridHeight) {
 		squareSize = 600/gridHeight;
 	}
@@ -329,24 +329,39 @@ function updateModalPreview () {
 	modalPreview.style.background = newColor;
 }
 
+function getDrawIDFromURL() {
+	var path = window.location.pathname;
+	var pathParts = path.split('/');
+	if (pathParts[1] === "drawings") {
+	  return pathParts[2];
+	} else {
+	  return null;
+	}
 
+}
 function saveDrawing(){
+
 	var request = new XMLHttpRequest();
-	var requestUrl = '/drawingpage/save';
+	var requestUrl = '/drawings/' + getDrawIDFromURL()+' /save';
 	request.open('POST', requestUrl);
+	var grid = document.getElementById("grid");
+	var pixelsColors = [];
+
+	for (var i=0; i < gridWidth*gridHeight; i++) {
+		pixelsColors.push(grid.children[i].style.backgroundColor);
+	}
+	
 	var requestBody = JSON.stringify({
-		title: drawing.title,
-		width: drawing.width,
-		height: drawing.height,
-		pixels: drawing.pixels,
-		palette: drawing.palette
+		pixels: pixelsColors,
 	});
+
 
 	request.setRequestHeader(
 		'Content-Type',
 		'application/json'
 	);
 	request.send(requestBody);
+	
 }
 
 
