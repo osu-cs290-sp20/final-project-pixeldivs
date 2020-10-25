@@ -166,7 +166,7 @@ function renderPreview(preview){
 	if(width <= height){
 		pixelSize = 350/height;
 	}
-	else if(width > height){
+	if(width > height){
 		pixelSize = 350/width;
 	}
 	for(var j = 0; j < width; j++){

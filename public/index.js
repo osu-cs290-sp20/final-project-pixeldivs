@@ -169,7 +169,7 @@ function fillPalette () {
 function clearGrid (color) {
 	var grid = document.getElementById("grid");
 	for (var i=0; i < gridWidth*gridHeight; i++) {
-			grid.children[i].style.background = color;
+			grid.children[i].style.background = "blue";
 	}
 	/*
 	for (var i=0; i < gridHeight; i++) {

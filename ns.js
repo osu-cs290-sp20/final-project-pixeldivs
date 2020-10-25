@@ -25,7 +25,6 @@ app.get('/', function (req, res, next) {
 app.get('/drawings/:drawid', function (req, res, next) {
   var drawid = req.params.drawid;
   if (drawingData[drawid]) {
-
     res.status(200).render('drawingpage', drawingData[drawid]);
   } else {
     next();
